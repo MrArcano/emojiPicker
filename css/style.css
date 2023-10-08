@@ -1,0 +1,134 @@
+:root{
+  --emoji-dim: 32px
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none;
+}
+
+.container{
+  border: 4px solid black;
+}
+
+.text{
+  height: 350px;
+  border-bottom: 4px solid black;
+}
+
+.text-insert{
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-insert input{
+  width: 100%;
+}
+
+#picker{
+  position: relative;
+}
+
+.picker-emoji{
+  border-radius: 16px;
+  padding: 16px;
+
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  
+  
+  position: absolute;
+  bottom: 64px;
+  left: 8px;
+}
+
+.menu-emoji{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 16px;
+}
+
+.emoji-section{
+  height: 250px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 8px;
+
+  scroll-behavior: smooth;
+  scroll-padding-top: 8px;
+}
+
+.emoji-title{
+  width: 70%;
+  margin: 8px auto;
+  text-align: center;
+  border-bottom: 1px solid black; 
+  text-transform: capitalize;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.emoji-box{
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(var(--emoji-dim) * 8);
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+
+.emoji{
+  border: 1px solid rgb(128, 128, 128); 
+  background-color: white;
+  cursor: pointer;
+
+  width: var(--emoji-dim);
+  aspect-ratio: 1/1;
+
+  line-height: var(--emoji-dim);
+  text-align: center;
+
+  position: relative;
+}
+
+.emoji-text{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+
+  border: 1px solid black;
+  background-color: gray;
+  font-size: 0.7rem;
+  padding: 0 8px;
+  
+  display: inline-block;
+  height: 16px;
+  line-height: 16px;
+  max-width: 300px;
+  white-space: pre;
+  overflow: hidden;
+}
+
+/* ------------------------------- */
+/* ---------- Scrollbar ---------- */
+/* ------------------------------- */
+::-webkit-scrollbar{
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: rgb(150, 150, 150);
+}
+
+::-webkit-scrollbar-track{
+  background-color: rgb(200, 200, 200);
+
+}
+/* ------------------------------- */

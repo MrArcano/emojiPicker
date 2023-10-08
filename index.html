@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Axios -->
+  <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+  <!-- Vue -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <!-- Css custom -->
+  <link rel="stylesheet" href="css/style.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+
+    <div id="picker">
+      <!-- chat section -->
+      <div class="text">
+        {{ textArea }}
+      </div>
+
+      <!-- insert message -->
+      <div class="text-insert">
+        <button @click="viewPicker = !viewPicker" type="button">Emoji</button>
+        <input v-model="textArea" type="text">
+      </div>
+
+      <!-- picker emoji -->
+      <div v-if="viewPicker === true" class="picker-emoji">
+        <div class="menu-emoji">
+          <a class="emoji" :href="'#' + keyObj[0]">😀</a>
+          <a class="emoji" :href="'#' + keyObj[1]">🐵</a>
+          <a class="emoji" :href="'#' + keyObj[2]">🍎</a>
+          <a class="emoji" :href="'#' + keyObj[3]">🎇</a>
+          <a class="emoji" :href="'#' + keyObj[4]">🌍</a>
+          <a class="emoji" :href="'#' + keyObj[5]">🛠</a>
+          <a class="emoji" :href="'#' + keyObj[6]">💯</a>
+          <a class="emoji" :href="'#' + keyObj[7]">🚩</a>
+        </div>
+
+        <div class="emoji-section">
+
+          <div v-for="(type , key) in emojiObj">
+  
+            <h4 class="emoji-title" :id="key">{{ key.split("_").join(" \& ") }}</h4>
+            
+            <!-- Emoji box -->
+            <div class="emoji-box">
+              <!-- Emoji -->
+              <div
+                @click="textArea += String.fromCodePoint(parseInt('0x' + emoji.unicode))"
+                @mouseenter="emojiActive = emoji"
+                @mouseleave="emojiActive = null"
+                v-for="emoji in type"
+                class="emoji">
+                <span>{{ String.fromCodePoint(parseInt("0x" + emoji.unicode)) }}</span>
+                <span
+                  @mouseenter="emojiActive = null"
+                  v-if="emojiActive === emoji"
+                  class="emoji-text">{{ emoji.name[0] }}</span>
+              </div><!-- end Emoji -->
+            </div><!-- end Emoji box -->
+  
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <script src="js/emojis.json"></script> -->
+  <script src="js/script.js"></script>
+  
+</body>
+</html>
